@@ -1,6 +1,6 @@
 package edu.dmacc.codedsm.app;
 
-public class Result {
+public class FizzyResult {
 
     private String message;
     private Submission submission;

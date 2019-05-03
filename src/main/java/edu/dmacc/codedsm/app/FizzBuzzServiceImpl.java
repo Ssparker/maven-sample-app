@@ -4,11 +4,13 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
 
     private MapRepository repository;
 
+    //1st unit
     public FizzBuzzServiceImpl(MapRepository repository) {
         this.repository = repository;
     }
 
-    public Result performFizzBuzzLogic(Submission submission) {
+    //2nd unit
+    public FizzyResult performFizzBuzzLogic(Submission submission) {
         String message = "";
         if (submission.getInputNumber() % 3 == 0 && submission.getInputNumber() % 5 == 0) {
             message = "FizzBuzz!";
@@ -20,21 +22,23 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
             message = "Input was not fizzy";
         }
 
-        Result result = createResult(submission, message);
+        FizzyResult fizzyResult = createResult(submission, message);
 
-        persistResultData(result);
+        persistResultData(fizzyResult);
 
-        return result;
+        return fizzyResult;
     }
 
-    public Result createResult(Submission submission, String message) {
-        Result result = new Result();
-        result.setMessage(message);
-        result.setSubmission(submission);
-        return result;
+    //3rd unit
+    public FizzyResult createResult(Submission submission, String message) {
+        FizzyResult fizzyResult = new FizzyResult();
+        fizzyResult.setMessage(message);
+        fizzyResult.setSubmission(submission);
+        return fizzyResult;
     }
 
-    private void persistResultData(Result result) {
-        repository.save(result);
+    //2nd unit
+    private void persistResultData(FizzyResult fizzyResult) {
+        repository.save(fizzyResult);
     }
 }
